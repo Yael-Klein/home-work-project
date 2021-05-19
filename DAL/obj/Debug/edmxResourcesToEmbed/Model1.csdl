@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HomeWorkProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HwToStydyClassOnDate">
+    <Key>
+      <PropertyRef Name="hwToStydyClassOnDate_Id" />
+    </Key>
+    <Property Name="hwToStydyClassOnDate_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studyClassId" Type="Int32" />
+    <Property Name="hwToStydyClassOnDate_Date" Type="DateTime" Precision="0" />
+    <Property Name="hwDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deadline" Type="DateTime" Precision="3" />
+    <Property Name="durationOfPreparation" Type="Int32" />
+    <Property Name="verificationQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="verificationAnswer" Type="Int32" />
+    <NavigationProperty Name="StudyClass" Relationship="Self.FK_HwToStydyClassOnDate_StudyClass" FromRole="HwToStydyClassOnDate" ToRole="StudyClass" />
+    <NavigationProperty Name="ReportToStudentOnDate" Relationship="Self.FK_ReportToStudentOnDate_HwToStydyClassOnDate" FromRole="HwToStydyClassOnDate" ToRole="ReportToStudentOnDate" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="professionId" />
+    </Key>
+    <Property Name="professionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="professionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudyClass" Relationship="Self.FK_StudyClass_Profession" FromRole="Profession" ToRole="StudyClass" />
+  </EntityType>
+  <EntityType Name="ReportToStudentOnDate">
+    <Key>
+      <PropertyRef Name="reportToStudentOnDate_Id" />
+    </Key>
+    <Property Name="reportToStudentOnDate_Id" Type="Int32" Nullable="false" />
+    <Property Name="hwToStydyClassOnDate_id" Type="Int32" />
+    <Property Name="studentId" Type="Int32" />
+    <Property Name="statusOfPreparation" Type="Boolean" />
+    <Property Name="reportingTime" Type="Time" Precision="7" />
+    <NavigationProperty Name="HwToStydyClassOnDate" Relationship="Self.FK_ReportToStudentOnDate_HwToStydyClassOnDate" FromRole="ReportToStudentOnDate" ToRole="HwToStydyClassOnDate" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_ReportToStudentOnDate_Student" FromRole="ReportToStudentOnDate" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="studentId" />
+    </Key>
+    <Property Name="studentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentTz" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="studentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentPel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentParentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentParentPel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="studentParentEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ReportToStudentOnDate" Relationship="Self.FK_ReportToStudentOnDate_Student" FromRole="Student" ToRole="ReportToStudentOnDate" />
+    <NavigationProperty Name="SudentInStudyGroup" Relationship="Self.FK_SudentInStudyGroup_Student" FromRole="Student" ToRole="SudentInStudyGroup" />
+  </EntityType>
+  <EntityType Name="StudyClass">
+    <Key>
+      <PropertyRef Name="studyClassId" />
+    </Key>
+    <Property Name="studyClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studyGroupId" Type="Int32" />
+    <Property Name="teacherId" Type="Int32" />
+    <Property Name="professionId" Type="Int32" />
+    <NavigationProperty Name="HwToStydyClassOnDate" Relationship="Self.FK_HwToStydyClassOnDate_StudyClass" FromRole="StudyClass" ToRole="HwToStydyClassOnDate" />
+    <NavigationProperty Name="Profession" Relationship="Self.FK_StudyClass_Profession" FromRole="StudyClass" ToRole="Profession" />
+    <NavigationProperty Name="StudyGroup" Relationship="Self.FK_StudyClass_StudyGroup" FromRole="StudyClass" ToRole="StudyGroup" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_StudyClass_Teacher" FromRole="StudyClass" ToRole="Teacher" />
+    <NavigationProperty Name="Teacher1" Relationship="Self.FK_StudyClass_Teacher1" FromRole="StudyClass" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="StudyGroup">
+    <Key>
+      <PropertyRef Name="studyGroupId" />
+    </Key>
+    <Property Name="studyGroupId" Type="Int32" Nullable="false" />
+    <Property Name="studyGroupYear" Type="DateTime" Precision="0" />
+    <Property Name="studyGroupClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudyClass" Relationship="Self.FK_StudyClass_StudyGroup" FromRole="StudyGroup" ToRole="StudyClass" />
+    <NavigationProperty Name="SudentInStudyGroup" Relationship="Self.FK_SudentInStudyGroup_StudyGroup" FromRole="StudyGroup" ToRole="SudentInStudyGroup" />
+  </EntityType>
+  <EntityType Name="SudentInStudyGroup">
+    <Key>
+      <PropertyRef Name="studentInStudyGroupId" />
+    </Key>
+    <Property Name="studentInStudyGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studyGroupId" Type="Int32" />
+    <Property Name="studentId" Type="Int32" />
+    <Property Name="studentStatus" Type="Boolean" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_SudentInStudyGroup_Student" FromRole="SudentInStudyGroup" ToRole="Student" />
+    <NavigationProperty Name="StudyGroup" Relationship="Self.FK_SudentInStudyGroup_StudyGroup" FromRole="SudentInStudyGroup" ToRole="StudyGroup" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="teacherId" />
+    </Key>
+    <Property Name="teacherId" Type="Int32" Nullable="false" />
+    <Property Name="teacherTz" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="teacherFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="teacherLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="teacherPel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="teacherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="teacherPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudyClass" Relationship="Self.FK_StudyClass_Teacher" FromRole="Teacher" ToRole="StudyClass" />
+    <NavigationProperty Name="StudyClass1" Relationship="Self.FK_StudyClass_Teacher1" FromRole="Teacher" ToRole="StudyClass" />
+  </EntityType>
+  <Association Name="FK_HwToStydyClassOnDate_StudyClass">
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="0..1" />
+    <End Role="HwToStydyClassOnDate" Type="Self.HwToStydyClassOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyClass">
+        <PropertyRef Name="studyClassId" />
+      </Principal>
+      <Dependent Role="HwToStydyClassOnDate">
+        <PropertyRef Name="studyClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportToStudentOnDate_HwToStydyClassOnDate">
+    <End Role="HwToStydyClassOnDate" Type="Self.HwToStydyClassOnDate" Multiplicity="0..1" />
+    <End Role="ReportToStudentOnDate" Type="Self.ReportToStudentOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HwToStydyClassOnDate">
+        <PropertyRef Name="hwToStydyClassOnDate_Id" />
+      </Principal>
+      <Dependent Role="ReportToStudentOnDate">
+        <PropertyRef Name="hwToStydyClassOnDate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Profession">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="professionId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="professionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportToStudentOnDate_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ReportToStudentOnDate" Type="Self.ReportToStudentOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="studentId" />
+      </Principal>
+      <Dependent Role="ReportToStudentOnDate">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SudentInStudyGroup_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="SudentInStudyGroup" Type="Self.SudentInStudyGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="studentId" />
+      </Principal>
+      <Dependent Role="SudentInStudyGroup">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_StudyGroup">
+    <End Role="StudyGroup" Type="Self.StudyGroup" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="studyGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="teacherId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="teacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Teacher1">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="teacherId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="teacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SudentInStudyGroup_StudyGroup">
+    <End Role="StudyGroup" Type="Self.StudyGroup" Multiplicity="0..1" />
+    <End Role="SudentInStudyGroup" Type="Self.SudentInStudyGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Principal>
+      <Dependent Role="SudentInStudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HomeWorkProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HwToStydyClassOnDate" EntityType="Self.HwToStydyClassOnDate" />
+    <EntitySet Name="Profession" EntityType="Self.Profession" />
+    <EntitySet Name="ReportToStudentOnDate" EntityType="Self.ReportToStudentOnDate" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <EntitySet Name="StudyClass" EntityType="Self.StudyClass" />
+    <EntitySet Name="StudyGroup" EntityType="Self.StudyGroup" />
+    <EntitySet Name="SudentInStudyGroup" EntityType="Self.SudentInStudyGroup" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK_HwToStydyClassOnDate_StudyClass" Association="Self.FK_HwToStydyClassOnDate_StudyClass">
+      <End Role="StudyClass" EntitySet="StudyClass" />
+      <End Role="HwToStydyClassOnDate" EntitySet="HwToStydyClassOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportToStudentOnDate_HwToStydyClassOnDate" Association="Self.FK_ReportToStudentOnDate_HwToStydyClassOnDate">
+      <End Role="HwToStydyClassOnDate" EntitySet="HwToStydyClassOnDate" />
+      <End Role="ReportToStudentOnDate" EntitySet="ReportToStudentOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Profession" Association="Self.FK_StudyClass_Profession">
+      <End Role="Profession" EntitySet="Profession" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportToStudentOnDate_Student" Association="Self.FK_ReportToStudentOnDate_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="ReportToStudentOnDate" EntitySet="ReportToStudentOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SudentInStudyGroup_Student" Association="Self.FK_SudentInStudyGroup_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="SudentInStudyGroup" EntitySet="SudentInStudyGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_StudyGroup" Association="Self.FK_StudyClass_StudyGroup">
+      <End Role="StudyGroup" EntitySet="StudyGroup" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Teacher" Association="Self.FK_StudyClass_Teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Teacher1" Association="Self.FK_StudyClass_Teacher1">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SudentInStudyGroup_StudyGroup" Association="Self.FK_SudentInStudyGroup_StudyGroup">
+      <End Role="StudyGroup" EntitySet="StudyGroup" />
+      <End Role="SudentInStudyGroup" EntitySet="SudentInStudyGroup" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
