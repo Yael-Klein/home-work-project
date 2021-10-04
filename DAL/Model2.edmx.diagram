@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47c7f18c25824329b520bae3807c396f" Name="Diagram1">
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.HwToStydyClassOnDate" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.Profession" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.ReportToStudentOnDate" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.Student" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.StudyClass" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.StudyGroup" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.SudentInStudyGroup" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.sysdiagrams" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeWorkProjectModel1.Teacher" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_HwToStydyClassOnDate_StudyClass" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_ReportToStudentOnDate_HwToStydyClassOnDate" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_StudyClass_Profession" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_ReportToStudentOnDate_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_SudentInStudyGroup_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_StudyClass_StudyGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_StudyClass_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_StudyClass_Teacher1" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeWorkProjectModel1.FK_SudentInStudyGroup_StudyGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

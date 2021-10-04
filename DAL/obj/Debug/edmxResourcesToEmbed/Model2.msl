@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HomeWorkProjectModel1StoreContainer" CdmEntityContainer="HomeWorkProjectEntities2">
+    <EntitySetMapping Name="HwToStydyClassOnDate">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.HwToStydyClassOnDate">
+        <MappingFragment StoreEntitySet="HwToStydyClassOnDate">
+          <ScalarProperty Name="hwToStydyClassOnDate_Id" ColumnName="hwToStydyClassOnDate_Id" />
+          <ScalarProperty Name="studyClassId" ColumnName="studyClassId" />
+          <ScalarProperty Name="hwToStydyClassOnDate_Date" ColumnName="hwToStydyClassOnDate_Date" />
+          <ScalarProperty Name="hwDescription" ColumnName="hwDescription" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="durationOfPreparation" ColumnName="durationOfPreparation" />
+          <ScalarProperty Name="verificationQuestion" ColumnName="verificationQuestion" />
+          <ScalarProperty Name="verificationAnswer" ColumnName="verificationAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profession">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.Profession">
+        <MappingFragment StoreEntitySet="Profession">
+          <ScalarProperty Name="professionId" ColumnName="professionId" />
+          <ScalarProperty Name="professionDescription" ColumnName="professionDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportToStudentOnDate">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.ReportToStudentOnDate">
+        <MappingFragment StoreEntitySet="ReportToStudentOnDate">
+          <ScalarProperty Name="reportToStudentOnDate_Id" ColumnName="reportToStudentOnDate_Id" />
+          <ScalarProperty Name="hwToStydyClassOnDate_id" ColumnName="hwToStydyClassOnDate_id" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="statusOfPreparation" ColumnName="statusOfPreparation" />
+          <ScalarProperty Name="reportingTime" ColumnName="reportingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentTz" ColumnName="studentTz" />
+          <ScalarProperty Name="studentFirstName" ColumnName="studentFirstName" />
+          <ScalarProperty Name="studentLastName" ColumnName="studentLastName" />
+          <ScalarProperty Name="studentPel" ColumnName="studentPel" />
+          <ScalarProperty Name="studentCity" ColumnName="studentCity" />
+          <ScalarProperty Name="studentAddress" ColumnName="studentAddress" />
+          <ScalarProperty Name="studentParentName" ColumnName="studentParentName" />
+          <ScalarProperty Name="studentParentPel" ColumnName="studentParentPel" />
+          <ScalarProperty Name="studentParentEmail" ColumnName="studentParentEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyClass">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.StudyClass">
+        <MappingFragment StoreEntitySet="StudyClass">
+          <ScalarProperty Name="studyClassId" ColumnName="studyClassId" />
+          <ScalarProperty Name="studyGroupId" ColumnName="studyGroupId" />
+          <ScalarProperty Name="teacherId" ColumnName="teacherId" />
+          <ScalarProperty Name="professionId" ColumnName="professionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudyGroup">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.StudyGroup">
+        <MappingFragment StoreEntitySet="StudyGroup">
+          <ScalarProperty Name="studyGroupId" ColumnName="studyGroupId" />
+          <ScalarProperty Name="studyGroupYear" ColumnName="studyGroupYear" />
+          <ScalarProperty Name="studyGroupClass" ColumnName="studyGroupClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SudentInStudyGroup">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.SudentInStudyGroup">
+        <MappingFragment StoreEntitySet="SudentInStudyGroup">
+          <ScalarProperty Name="studentInStudyGroupId" ColumnName="studentInStudyGroupId" />
+          <ScalarProperty Name="studyGroupId" ColumnName="studyGroupId" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentStatus" ColumnName="studentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher">
+      <EntityTypeMapping TypeName="HomeWorkProjectModel1.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="teacherId" ColumnName="teacherId" />
+          <ScalarProperty Name="teacherTz" ColumnName="teacherTz" />
+          <ScalarProperty Name="teacherFirstName" ColumnName="teacherFirstName" />
+          <ScalarProperty Name="teacherLastName" ColumnName="teacherLastName" />
+          <ScalarProperty Name="teacherPel" ColumnName="teacherPel" />
+          <ScalarProperty Name="teacherEmail" ColumnName="teacherEmail" />
+          <ScalarProperty Name="teacherPassword" ColumnName="teacherPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="HomeWorkProjectModel1.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="HomeWorkProjectModel1.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HomeWorkProjectModel1.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="HomeWorkProjectModel1.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="HomeWorkProjectModel1.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HomeWorkProjectModel1.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HomeWorkProjectModel1.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="StatusPupilByDay" FunctionName="HomeWorkProjectModel1.Store.StatusPupilByDay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.StatusPupilByDay_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentFirstName" ColumnName="studentFirstName" />
+          <ScalarProperty Name="studentLastName" ColumnName="studentLastName" />
+          <ScalarProperty Name="statusOfPreparation" ColumnName="statusOfPreparation" />
+          <ScalarProperty Name="professionDescription" ColumnName="professionDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getClassForTeacher" FunctionName="HomeWorkProjectModel1.Store.getClassForTeacher" />
+    <FunctionImportMapping FunctionImportName="getClassesForTeacher" FunctionName="HomeWorkProjectModel1.Store.getClassesForTeacher" />
+    <FunctionImportMapping FunctionImportName="getListClassesForTeacher" FunctionName="HomeWorkProjectModel1.Store.getListClassesForTeacher" />
+    <FunctionImportMapping FunctionImportName="StatusStudentByClass" FunctionName="HomeWorkProjectModel1.Store.StatusStudentByClass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.StatusStudentByClass_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentFirstName" ColumnName="studentFirstName" />
+          <ScalarProperty Name="studentLastName" ColumnName="studentLastName" />
+          <ScalarProperty Name="statusOfPreparation" ColumnName="statusOfPreparation" />
+          <ScalarProperty Name="studyGroupClass" ColumnName="studyGroupClass" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HWForStudent" FunctionName="HomeWorkProjectModel1.Store.HWForStudent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.HWForStudent_Result">
+          <ScalarProperty Name="hwToStydyClassOnDate_Date" ColumnName="hwToStydyClassOnDate_Date" />
+          <ScalarProperty Name="hwDescription" ColumnName="hwDescription" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Hw" FunctionName="HomeWorkProjectModel1.Store.Hw">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.Hw_Result">
+          <ScalarProperty Name="hwToStydyClassOnDate_Date" ColumnName="hwToStydyClassOnDate_Date" />
+          <ScalarProperty Name="hwDescription" ColumnName="hwDescription" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="durationOfPreparation" ColumnName="durationOfPreparation" />
+          <ScalarProperty Name="verificationQuestion" ColumnName="verificationQuestion" />
+          <ScalarProperty Name="verificationAnswer" ColumnName="verificationAnswer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="s" FunctionName="HomeWorkProjectModel1.Store.s">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.s_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentFirstName" ColumnName="studentFirstName" />
+          <ScalarProperty Name="studentLastName" ColumnName="studentLastName" />
+          <ScalarProperty Name="statusOfPreparation" ColumnName="statusOfPreparation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="p" FunctionName="HomeWorkProjectModel1.Store.p">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.p_Result">
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="studentFirstName" ColumnName="studentFirstName" />
+          <ScalarProperty Name="studentLastName" ColumnName="studentLastName" />
+          <ScalarProperty Name="statusOfPreparation" ColumnName="statusOfPreparation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HwS" FunctionName="HomeWorkProjectModel1.Store.HwS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HomeWorkProjectModel1.HwS_Result">
+          <ScalarProperty Name="hwToStydyClassOnDate_Date" ColumnName="hwToStydyClassOnDate_Date" />
+          <ScalarProperty Name="hwDescription" ColumnName="hwDescription" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="durationOfPreparation" ColumnName="durationOfPreparation" />
+          <ScalarProperty Name="verificationQuestion" ColumnName="verificationQuestion" />
+          <ScalarProperty Name="verificationAnswer" ColumnName="verificationAnswer" />
+          <ScalarProperty Name="professionDescription" ColumnName="professionDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

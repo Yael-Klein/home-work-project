@@ -4,3 +4,9 @@ C:\Users\user1\Pictures\HomeWorkPeoject\DTO\obj\Debug\DTO.csprojAssemblyReferenc
 C:\Users\user1\Pictures\HomeWorkPeoject\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\user1\Pictures\HomeWorkPeoject\DTO\obj\Debug\DTO.dll
 C:\Users\user1\Pictures\HomeWorkPeoject\DTO\obj\Debug\DTO.pdb
+C:\Users\user1\Documents\yael\home-work-project\DTO\bin\Debug\DTO.dll
+C:\Users\user1\Documents\yael\home-work-project\DTO\bin\Debug\DTO.pdb
+C:\Users\user1\Documents\yael\home-work-project\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\user1\Documents\yael\home-work-project\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\user1\Documents\yael\home-work-project\DTO\obj\Debug\DTO.dll
+C:\Users\user1\Documents\yael\home-work-project\DTO\obj\Debug\DTO.pdb

@@ -1,0 +1,18 @@
+﻿The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:01.6632000.
+Generating the model took 00:00:46.1509811.
+The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:01.1381344.
+Generating the model took 00:00:44.4120468.
+The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.9794049.
+Generating the model took 00:00:02.8747631.
+The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:01.0501753.
+Generating the model took 00:00:02.8871048.
+The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.7765577.
+Generating the model took 00:00:44.6869544.
+The model was generated with warnings or errors.Model2.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:03.3007222.
+Generating the model took 00:00:46.6768295.

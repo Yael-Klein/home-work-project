@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HwForStudentForToday.cs" />
     <Compile Include="HwToStydyClassOnDateDTO.cs" />
     <Compile Include="ProfessionDTO.cs" />
     <Compile Include="ReportToStudentOnDateDTO.cs" />
+    <Compile Include="StatusesStudentHomeWork.cs" />
+    <Compile Include="StatusStudentByClass.cs" />
     <Compile Include="StudentDTO.cs" />
     <Compile Include="StudyClassDTO.cs" />
     <Compile Include="StudyGroupDTO.cs" />

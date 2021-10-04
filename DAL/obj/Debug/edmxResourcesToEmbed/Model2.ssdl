@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HomeWorkProjectModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HwToStydyClassOnDate">
+    <Key>
+      <PropertyRef Name="hwToStydyClassOnDate_Id" />
+    </Key>
+    <Property Name="hwToStydyClassOnDate_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studyClassId" Type="int" />
+    <Property Name="hwToStydyClassOnDate_Date" Type="date" />
+    <Property Name="hwDescription" Type="nvarchar(max)" />
+    <Property Name="deadline" Type="datetime" />
+    <Property Name="durationOfPreparation" Type="int" />
+    <Property Name="verificationQuestion" Type="nvarchar" MaxLength="50" />
+    <Property Name="verificationAnswer" Type="int" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="professionId" />
+    </Key>
+    <Property Name="professionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="professionDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ReportToStudentOnDate">
+    <Key>
+      <PropertyRef Name="reportToStudentOnDate_Id" />
+    </Key>
+    <Property Name="reportToStudentOnDate_Id" Type="int" Nullable="false" />
+    <Property Name="hwToStydyClassOnDate_id" Type="int" />
+    <Property Name="studentId" Type="int" />
+    <Property Name="statusOfPreparation" Type="bit" />
+    <Property Name="reportingTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="studentId" />
+    </Key>
+    <Property Name="studentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentTz" Type="nvarchar" MaxLength="13" />
+    <Property Name="studentFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentPel" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentParentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentParentPel" Type="nvarchar" MaxLength="50" />
+    <Property Name="studentParentEmail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StudyClass">
+    <Key>
+      <PropertyRef Name="studyClassId" />
+    </Key>
+    <Property Name="studyClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studyGroupId" Type="int" />
+    <Property Name="teacherId" Type="int" />
+    <Property Name="professionId" Type="int" />
+  </EntityType>
+  <EntityType Name="StudyGroup">
+    <Key>
+      <PropertyRef Name="studyGroupId" />
+    </Key>
+    <Property Name="studyGroupId" Type="int" Nullable="false" />
+    <Property Name="studyGroupYear" Type="date" />
+    <Property Name="studyGroupClass" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SudentInStudyGroup">
+    <Key>
+      <PropertyRef Name="studentInStudyGroupId" />
+    </Key>
+    <Property Name="studentInStudyGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studyGroupId" Type="int" />
+    <Property Name="studentId" Type="int" />
+    <Property Name="studentStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="teacherId" />
+    </Key>
+    <Property Name="teacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherTz" Type="nvarchar" MaxLength="13" />
+    <Property Name="teacherFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="teacherLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="teacherPel" Type="nvarchar" MaxLength="15" />
+    <Property Name="teacherEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="teacherPassword" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK_HwToStydyClassOnDate_StudyClass">
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="0..1" />
+    <End Role="HwToStydyClassOnDate" Type="Self.HwToStydyClassOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyClass">
+        <PropertyRef Name="studyClassId" />
+      </Principal>
+      <Dependent Role="HwToStydyClassOnDate">
+        <PropertyRef Name="studyClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportToStudentOnDate_HwToStydyClassOnDate">
+    <End Role="HwToStydyClassOnDate" Type="Self.HwToStydyClassOnDate" Multiplicity="0..1" />
+    <End Role="ReportToStudentOnDate" Type="Self.ReportToStudentOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HwToStydyClassOnDate">
+        <PropertyRef Name="hwToStydyClassOnDate_Id" />
+      </Principal>
+      <Dependent Role="ReportToStudentOnDate">
+        <PropertyRef Name="hwToStydyClassOnDate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportToStudentOnDate_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ReportToStudentOnDate" Type="Self.ReportToStudentOnDate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="studentId" />
+      </Principal>
+      <Dependent Role="ReportToStudentOnDate">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Profession">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="professionId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="professionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_StudyGroup">
+    <End Role="StudyGroup" Type="Self.StudyGroup" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="studyGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="teacherId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="teacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudyClass_Teacher1">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="StudyClass" Type="Self.StudyClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="teacherId" />
+      </Principal>
+      <Dependent Role="StudyClass">
+        <PropertyRef Name="teacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SudentInStudyGroup_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="SudentInStudyGroup" Type="Self.SudentInStudyGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="studentId" />
+      </Principal>
+      <Dependent Role="SudentInStudyGroup">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SudentInStudyGroup_StudyGroup">
+    <End Role="StudyGroup" Type="Self.StudyGroup" Multiplicity="0..1" />
+    <End Role="SudentInStudyGroup" Type="Self.SudentInStudyGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Principal>
+      <Dependent Role="SudentInStudyGroup">
+        <PropertyRef Name="studyGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="getClassesForTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacherId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getClassForTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacherId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getListClassesForTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teacherId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Hw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="HWForStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="HwS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="p" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proffesion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="s" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="class" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="StatusPupilByDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="proffesion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="StatusStudentByClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="class" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="HomeWorkProjectModel1StoreContainer">
+    <EntitySet Name="HwToStydyClassOnDate" EntityType="Self.HwToStydyClassOnDate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportToStudentOnDate" EntityType="Self.ReportToStudentOnDate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudyClass" EntityType="Self.StudyClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudyGroup" EntityType="Self.StudyGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SudentInStudyGroup" EntityType="Self.SudentInStudyGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HwToStydyClassOnDate_StudyClass" Association="Self.FK_HwToStydyClassOnDate_StudyClass">
+      <End Role="StudyClass" EntitySet="StudyClass" />
+      <End Role="HwToStydyClassOnDate" EntitySet="HwToStydyClassOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportToStudentOnDate_HwToStydyClassOnDate" Association="Self.FK_ReportToStudentOnDate_HwToStydyClassOnDate">
+      <End Role="HwToStydyClassOnDate" EntitySet="HwToStydyClassOnDate" />
+      <End Role="ReportToStudentOnDate" EntitySet="ReportToStudentOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportToStudentOnDate_Student" Association="Self.FK_ReportToStudentOnDate_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="ReportToStudentOnDate" EntitySet="ReportToStudentOnDate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Profession" Association="Self.FK_StudyClass_Profession">
+      <End Role="Profession" EntitySet="Profession" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_StudyGroup" Association="Self.FK_StudyClass_StudyGroup">
+      <End Role="StudyGroup" EntitySet="StudyGroup" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Teacher" Association="Self.FK_StudyClass_Teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudyClass_Teacher1" Association="Self.FK_StudyClass_Teacher1">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="StudyClass" EntitySet="StudyClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SudentInStudyGroup_Student" Association="Self.FK_SudentInStudyGroup_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="SudentInStudyGroup" EntitySet="SudentInStudyGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SudentInStudyGroup_StudyGroup" Association="Self.FK_SudentInStudyGroup_StudyGroup">
+      <End Role="StudyGroup" EntitySet="StudyGroup" />
+      <End Role="SudentInStudyGroup" EntitySet="SudentInStudyGroup" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
